@@ -1,10 +1,12 @@
 package com.codurance.tictacto;
 
 public class TicTacTo {
+
+    private static final String EMPTY = null;
+
     private int turn = 1;
+
     private String[][] board;
-    private static final String X = "X";
-    private static final String O = "O";
 
     public TicTacTo(String[][] board) {
         this.board = board;
@@ -16,7 +18,7 @@ public class TicTacTo {
             throw new IllegalArgumentException("X goes first!");
         }
 
-        if (board[x][y] != null) {
+        if (board[x][y] != EMPTY) {
             throw new IllegalArgumentException("That space is already taken!");
         }
         board[x][y] = player;
@@ -26,44 +28,79 @@ public class TicTacTo {
     }
 
     public String checkForWinner() {
-        String winner = "";
-        //Check Horizontal
-        for (int x = 0; x < 3; x++) {
-            if (board[x][0] == "X" && board[x][1] == "X" && board[x][2] == "X") {
-                winner = X;
-                break;
-            } else if (board[x][0] == "O" && board[x][1] == "O" && board[x][2] == "O") {
-                winner = O;
-                break;
-            } else {
-                //Check Vertical
-                for (int y = 0; y < 3; y++) {
-                    if (board[0][y] == "X" && board[1][y] == "X" && board[2][y] == "X") {
-                        winner = X;
-                        break;
-                    } else if (board[0][y] == "O" && board[1][y] == "O" && board[2][y] == "O") {
-                        winner = O;
-                        break;
-                    } else {
-                        winner = null;
-                    }
+        String[] PLAYERS = {"X", "O"};
+        for (String player : PLAYERS) {
+            if (isHorizontalWinner(player)
+                    || isVerticalWinner(player)
+                    || isDiagonalTopLeftToBottomRightWinner(player)
+                    || isDiagonalBottomLeftToTopRightWinner(player)) {
+                return player;
+            }
+        }
+        return "";
+    }
+
+    private boolean isHorizontalWinner(String player) {
+        for (int y = 0; y < board.length; y++) {
+            for (int x = 0; x < board.length; x++) {
+                if (!player.equals(board[x][y])) {
+                    break;
+                } else if (x == board.length - 1) {
+                    return true;
                 }
             }
         }
-        //Check Diagonal
-        if (board[0][0] == "X" && board[1][1] == "X" && board[2][2] == "X") {
-            winner = X;
-        } else if (board[0][0] == "O" && board[1][1] == "O" && board[2][2] == "O") {
-            winner = O;
-        } else if (board[2][0] == "X" && board[1][1] == "X" && board[0][2] == "X") {
-            winner = X;
-        } else if (board[2][0] == "O" && board[1][1] == "O" && board[0][2] == "O") {
-            winner = O;
+        return false;
+    }
+
+    private boolean isVerticalWinner(String player) {
+        for (int x = 0; x < board.length; x++) {
+            for (int y = 0; y < board.length; y++) {
+                if (!player.equals(board[x][y])) {
+                    break;
+                } else if (y == board.length - 1) {
+                    return true;
+                }
+            }
         }
-        return winner;
+        return false;
+    }
+
+    private boolean isDiagonalTopLeftToBottomRightWinner(String player) {
+        int x = 0;
+        int y = 0;
+        outer:
+        while (x < board.length) {
+            while (y < board.length) {
+                if (!player.equals(board[x][y])) {
+                    break outer;
+                } else if (y == board.length - 1) {
+                    return true;
+                } else {
+                    x += 1;
+                    y += 1;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean isDiagonalBottomLeftToTopRightWinner(String player) {
+        int x = 0;
+        int y = board.length - 1;
+        outer:
+        while (x < board.length) {
+            while (y >= 0) {
+                if (!player.equals(board[x][y])) {
+                    break outer;
+                } else if (y == 0) {
+                    return true;
+                } else {
+                    x += 1;
+                    y -= 1;
+                }
+            }
+        }
+        return false;
     }
 }
-
-
-
-
