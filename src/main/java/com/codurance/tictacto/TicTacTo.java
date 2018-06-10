@@ -1,24 +1,32 @@
 package com.codurance.tictacto;
 
-public class TicTacTo {
+import java.util.Objects;
+
+class TicTacTo {
 
     private static final String EMPTY = null;
+
+    private static final String O = "O";
+
+    private static final String X = "X";
+
+    private static final String[] PLAYERS = {X, O};
 
     private int turn = 1;
 
     private String[][] board;
 
-    public TicTacTo(String[][] board) {
+    TicTacTo(String[][] board) {
         this.board = board;
     }
 
-    public String[][] nextTurn(String player, int x, int y) {
+    String[][] nextTurn(String player, int x, int y) {
 
-        if (turn == 1 && player == "O") {
+        if (turn == 1 && player.equals(O)) {
             throw new IllegalArgumentException("X goes first!");
         }
 
-        if (board[x][y] != EMPTY) {
+        if (!Objects.equals(board[x][y], EMPTY)) {
             throw new IllegalArgumentException("That space is already taken!");
         }
         board[x][y] = player;
@@ -27,8 +35,8 @@ public class TicTacTo {
         return board;
     }
 
-    public String checkForWinner() {
-        String[] PLAYERS = {"X", "O"};
+    String checkForWinner() {
+
         for (String player : PLAYERS) {
             if (isHorizontalWinner(player)
                     || isVerticalWinner(player)
@@ -54,9 +62,9 @@ public class TicTacTo {
     }
 
     private boolean isVerticalWinner(String player) {
-        for (int x = 0; x < board.length; x++) {
+        for (String[] aBoard : board) {
             for (int y = 0; y < board.length; y++) {
-                if (!player.equals(board[x][y])) {
+                if (!player.equals(aBoard[y])) {
                     break;
                 } else if (y == board.length - 1) {
                     return true;
