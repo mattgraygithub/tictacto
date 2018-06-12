@@ -178,7 +178,6 @@ public class TicTacToTest {
         assertThat(tictacto.checkForWinner(), is(X));
     }
 
-
     @Test
     public void xWinsDiagonalBottomLeftToTopRight() {
         TicTacTo tictacto = new TicTacTo(new String[][]{
