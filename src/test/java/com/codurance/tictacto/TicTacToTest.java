@@ -44,7 +44,7 @@ public class TicTacToTest {
     public void shouldOnlyAllowMoveIntoEmptySpace() {
         TicTacTo tictacto = new TicTacTo(emptyBoard);
         tictacto.nextTurn(X, 0, 2);
-        String[][] board = tictacto.nextTurn(O, 0, 2);
+        tictacto.nextTurn(O, 0, 2);
     }
 
     @Test
