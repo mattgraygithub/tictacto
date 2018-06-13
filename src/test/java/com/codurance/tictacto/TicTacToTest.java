@@ -54,7 +54,7 @@ public class TicTacToTest {
                 {EMPTY, O, O,},
                 {EMPTY, EMPTY, EMPTY}
         });
-        assertThat(tictacto.checkForWinner(), is(X));
+        assertThat(tictacto.isWinner(), is(X));
     }
 
     @Test
@@ -64,7 +64,7 @@ public class TicTacToTest {
                 {X, X, X},
                 {EMPTY, EMPTY, EMPTY}
         });
-        assertThat(tictacto.checkForWinner(), is(X));
+        assertThat(tictacto.isWinner(), is(X));
     }
 
     @Test
@@ -74,7 +74,7 @@ public class TicTacToTest {
                 {O, O, EMPTY},
                 {X, X, X}
         });
-        assertThat(tictacto.checkForWinner(), is(X));
+        assertThat(tictacto.isWinner(), is(X));
     }
 
     @Test
@@ -84,7 +84,7 @@ public class TicTacToTest {
                 {X, X, EMPTY},
                 {X, X, EMPTY}
         });
-        assertThat(tictacto.checkForWinner(), is(O));
+        assertThat(tictacto.isWinner(), is(O));
     }
 
     @Test
@@ -94,7 +94,7 @@ public class TicTacToTest {
                 {O, O, O},
                 {X, X, EMPTY}
         });
-        assertThat(tictacto.checkForWinner(), is(O));
+        assertThat(tictacto.isWinner(), is(O));
     }
 
     @Test
@@ -104,7 +104,7 @@ public class TicTacToTest {
                 {X, X, EMPTY},
                 {O, O, O}
         });
-        assertThat(tictacto.checkForWinner(), is(O));
+        assertThat(tictacto.isWinner(), is(O));
     }
 
 
@@ -115,7 +115,7 @@ public class TicTacToTest {
                 {X, EMPTY, EMPTY},
                 {X, O, O}
         });
-        assertThat(tictacto.checkForWinner(), is(X));
+        assertThat(tictacto.isWinner(), is(X));
     }
 
     @Test
@@ -125,7 +125,7 @@ public class TicTacToTest {
                 {O, X, EMPTY},
                 {O, X, EMPTY}
         });
-        assertThat(tictacto.checkForWinner(), is(X));
+        assertThat(tictacto.isWinner(), is(X));
     }
 
     @Test
@@ -135,7 +135,7 @@ public class TicTacToTest {
                 {O, EMPTY, X},
                 {O, EMPTY, X}
         });
-        assertThat(tictacto.checkForWinner(), is(X));
+        assertThat(tictacto.isWinner(), is(X));
     }
 
     @Test
@@ -145,7 +145,7 @@ public class TicTacToTest {
                 {O, X, X},
                 {O, EMPTY, X}
         });
-        assertThat(tictacto.checkForWinner(), is(O));
+        assertThat(tictacto.isWinner(), is(O));
     }
 
     @Test
@@ -155,7 +155,7 @@ public class TicTacToTest {
                 {X, O, X},
                 {X, O, X}
         });
-        assertThat(tictacto.checkForWinner(), is(O));
+        assertThat(tictacto.isWinner(), is(O));
     }
 
     @Test
@@ -165,7 +165,7 @@ public class TicTacToTest {
                 {EMPTY, X, O},
                 {X, EMPTY, O}
         });
-        assertThat(tictacto.checkForWinner(), is(O));
+        assertThat(tictacto.isWinner(), is(O));
     }
 
     @Test
@@ -175,7 +175,7 @@ public class TicTacToTest {
                 {EMPTY, X, O},
                 {EMPTY, EMPTY, X}
         });
-        assertThat(tictacto.checkForWinner(), is(X));
+        assertThat(tictacto.isWinner(), is(X));
     }
 
     @Test
@@ -185,7 +185,7 @@ public class TicTacToTest {
                 {EMPTY, X, EMPTY},
                 {X, EMPTY, EMPTY}
         });
-        assertThat(tictacto.checkForWinner(), is(X));
+        assertThat(tictacto.isWinner(), is(X));
     }
 
     @Test
@@ -195,7 +195,7 @@ public class TicTacToTest {
                 {X, O, X},
                 {EMPTY, EMPTY, O}
         });
-        assertThat(tictacto.checkForWinner(), is(O));
+        assertThat(tictacto.isWinner(), is(O));
     }
 
     @Test
@@ -205,6 +205,6 @@ public class TicTacToTest {
                 {EMPTY, O, X},
                 {O, EMPTY, X}
         });
-        assertThat(tictacto.checkForWinner(), is(O));
+        assertThat(tictacto.isWinner(), is(O));
     }
 }

@@ -2,7 +2,7 @@ package com.codurance.tictacto;
 
 import java.util.Objects;
 
-public class TicTacTo {
+class TicTacTo {
 
     private static final String EMPTY = null;
 
@@ -20,8 +20,7 @@ public class TicTacTo {
         this.board = board;
     }
 
-    public String[][] nextTurn(String player, int x, int y) {
-
+    String[][] nextTurn(String player, int x, int y) {
         if (turn == 1 && player.equals(O)) {
             throw new IllegalArgumentException("X goes first!");
         }
@@ -35,8 +34,7 @@ public class TicTacTo {
         return board;
     }
 
-    public String checkForWinner() {
-
+    String isWinner() {
         for (String player : PLAYERS) {
             if (isHorizontalWinner(player)
                     || isVerticalWinner(player)
